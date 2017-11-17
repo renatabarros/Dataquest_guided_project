@@ -17,3 +17,16 @@ def read_csv(filename):
             int_fields.append(int(values))
             final_list.append(int_fields)
     return final_list
+
+# Creating a dictionary with numbers of birth per month - needs fixing
+
+def month_births(input_list):
+    births_per_month = {}
+    for each in input_list:
+        month = each[1]
+        births = each[4]
+        if month in births_per_month:
+            births_per_month[month] = births_per_month[month] + births
+        else:
+            births_per_month[month] = births
+    return births_per_month
