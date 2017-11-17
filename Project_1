@@ -1,0 +1,41 @@
+# Added markdown - Jupyter
+
+# Birth dates in the USA
+# This Python code extracts the number of births on each day of the week from the
+# following dataset: https://github.com/fivethirtyeight/data/tree/master/births
+# The data is structured as follows:
+# year - Year - [0]
+# month - Month - [1]
+# date_of_month - Day number of the month - [2]
+# day_of_week - Monday to Sunday are equivalent to 1 to 7 - [3]
+# births - Number of births - [4]
+
+# Opening the file
+f = open("births.csv","r")
+a = f.read()
+
+data = a.split("\n")
+
+all_data = []
+for rows in data:
+    row = rows.split(",")
+    all_data.append(row)
+
+# Getting rid of the first line (header)
+no_header_data = all_data[1:len(all_data)]
+
+# Creating and empty dictionary that will gather number of births per day of the week
+dictionary = {}
+ 
+for item in no_header_data:
+    day_of_week = item[3]
+    birth = item[4]
+    births = int(birth) # Essential step as the data in no_header_data is stored as strings
+    if day_of_week in dictionary:
+        dictionary[day_of_week] = dictionary[day_of_week] + births
+    else:
+        dictionary[day_of_week] = births
+
+# Returns the final results of day of week and total number of births
+dictionary
+
