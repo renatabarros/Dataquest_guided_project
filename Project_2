@@ -1,0 +1,19 @@
+# Defining a function that:
+# 1) Opens a data file
+# 2) Splits the strings on the newline character
+# 3) Excludes the header row
+# 4) Converts the dataset into a list of lists with integer values
+
+def read_csv(filename):
+    f = open(filename, "r")
+    a = f.read()
+    data = a.split("\n")
+    string_list = data[1:len(data)]
+    final_list = []
+    for each in string_list:
+        int_fields = []
+        string_fields = each.split(",")
+        for values in string_fields:
+            int_fields.append(int(values))
+            final_list.append(int_fields)
+    return final_list
