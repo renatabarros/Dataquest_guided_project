@@ -18,7 +18,7 @@ def read_csv(filename):
         final_list.append(int_fields) # Be careful with the indentation! 
     return final_list
 
-# Creating a dictionary with numbers of birth per month - needs fixing
+# Creating a dictionary with numbers of birth per month
 
 def month_births(input_list):
     births_per_month = {}
@@ -30,3 +30,16 @@ def month_births(input_list):
         else:
             births_per_month[month] = births
     return births_per_month
+
+# Creating a dictionary that calculate the number of births for any variable  (column)
+
+def calc_counts(data,column):
+    number_of_births = {}
+    for each in data:
+        column_value = each[column]
+        births = each[4]
+        if column_value in number_of_births:
+            number_of_births[column_value] = number_of_births[column_value] + births
+        else:
+            number_of_births[column_value] = births
+    return number_of_births
