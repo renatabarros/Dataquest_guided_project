@@ -10,12 +10,12 @@ def read_csv(filename):
     data = a.split("\n")
     string_list = data[1:len(data)]
     final_list = []
-    for each in string_list:
+    for row in string_list:
         int_fields = []
-        string_fields = each.split(",")
+        string_fields = row.split(",")
         for values in string_fields:
             int_fields.append(int(values))
-            final_list.append(int_fields)
+        final_list.append(int_fields) # Be careful with the indentation! 
     return final_list
 
 # Creating a dictionary with numbers of birth per month - needs fixing
